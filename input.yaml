@@ -1,0 +1,34 @@
+---
+input:
+  - type: people
+    id: 1
+    infoRequest:
+      - name
+      - films
+      - gender
+      - starships
+      - url
+  - type: people
+    id: 16
+    infoRequest:
+      - name
+      - mass
+      - gender
+      - species
+      - url
+  - type: starship
+    id: 3
+    infoRequest:
+      - name
+      - max_atmospheric_speed
+      - manufacturer
+      - crew
+      - url
+  - type: planet
+    id: 8
+    infoRequest:
+      - name
+      - climate
+      - terrain
+      - url
+      - residents
