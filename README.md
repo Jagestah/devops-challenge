@@ -8,8 +8,3 @@ Write a script in Go or Python that will call out to the [Star Wars API](https:/
 - The script should be dockerized and be able to run alternative `input.yaml` files.
 - The docker container should be deployable to Kubernetes via a Helm Chart
 - Results should be posted to a public Github repo with an associated Pull Request.
-
-
-- Bears
-  - Beats
-    - Battlestar Glactica
