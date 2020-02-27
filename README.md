@@ -5,7 +5,7 @@ Your company has tasked you with writing an integration for the [Star Wars API](
 
 Some criteria for the project:
 - The output should be written to a file `swapi-output.json`.
-- The script should be able to run alternative `input.yaml` files
+- Build and include alternative `input.yaml` files.
 - The script should be dockerized.
 - The docker container should be deployable to Kubernetes via a Helm Chart
 - Results should be posted to a public Github repo with an associated Pull Request.
