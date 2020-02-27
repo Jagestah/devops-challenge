@@ -20,7 +20,7 @@ input:
     id: 3
     infoRequest:
       - name
-      - max_atmospheric_speed
+      - max_atmosphering_speed
       - manufacturer
       - crew
       - url
