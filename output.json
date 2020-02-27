@@ -1,0 +1,73 @@
+[
+  {
+    "name": "C-3PO",
+    "films": [
+      {
+        "name": "The Empire Strikes Back",
+        "url": "https://swapi.co/api/films/2/"
+      },
+      {
+        "name": "Attack of the Clones",
+        "url": "https://swapi.co/api/films/5/"
+      },
+      {
+        "name": "The Phantom Menace",
+        "url": "https://swapi.co/api/films/4/"
+      },
+      {
+        "name": "Revenge of the Sith",
+        "url": "https://swapi.co/api/films/6/"
+      },
+      {
+        "name": "Return of the Jedi",
+        "url": "https://swapi.co/api/films/3/"
+      },
+      {
+        "name": "A New Hope",
+        "url": "https://swapi.co/api/films/1/"
+      }
+    ],
+    "gender": "n/a",
+    "starships": [],
+    "url": "https://swapi.co/api/people/2/"
+  },
+  {
+    "name": "Jek Tono Porkins",
+    "mass": "110",
+    "gender": "male",
+    "species": [
+      {
+        "name": "Human",
+        "url": "https://swapi.co/api/species/1/"
+      }
+    ],
+    "url": "https://swapi.co/api/people/19/"
+  },
+  {
+    "name": "Rebel transport",
+    "max_atmosphering_speed": "650",
+    "manufacturer": "Gallofree Yards, Inc.",
+    "crew": "6",
+    "url": "https://swapi.co/api/starships/17/"
+  },
+  {
+    "name": "Coruscant",
+    "climate": "temperate",
+    "terrain": "cityscape, mountains",
+    "url": "https://swapi.co/api/planets/9/",
+    "residents": [
+      {
+        "name": "Finis Valorum",
+        "url": "https://swapi.co/api/people/34/"
+      },
+      {
+        "name": "Adi Gallia",
+        "url": "https://swapi.co/api/people/55/"
+      },
+      {
+        "name": "Jocasta Nu",
+        "url": "https://swapi.co/api/people/74/"
+      }
+    ]
+  }
+]
