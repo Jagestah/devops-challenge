@@ -16,7 +16,7 @@ input:
       - gender
       - species
       - url
-  - type: starship
+  - type: starships
     id: 3
     infoRequest:
       - name
@@ -24,7 +24,7 @@ input:
       - manufacturer
       - crew
       - url
-  - type: planet
+  - type: planets
     id: 8
     infoRequest:
       - name
