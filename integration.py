@@ -1,6 +1,5 @@
 import requests
 import yaml
-import time
 
 # save an empty list to house the data that will be written to the json file that will result from this app
 output = []
@@ -37,5 +36,3 @@ with open(r'input.yaml') as file:
 # create the new file with arg "x", then write my list to it
 with open('swapi-output.json', 'x') as output_file:
         output_file.write(f'{output}')
-
-time.sleep(10000)
