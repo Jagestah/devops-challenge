@@ -1,38 +1,41 @@
-# """open and read input.yaml  - - - done"""
-# """send an api request based on the object received from input to swapi.dev  - - - done"""
-# """parse the response from swapi and save data, in json format, for only the keys provided in input.yaml  - - - done"""
-# """format the aggregate response object to write to a file named swapi-output.json  - - - done"""
-# """dockerize the script (should be deployable to k8s via helm chart) - - - done"""
-
 import requests
 import yaml
+import time
 
+# save an empty list to house the data that will be written to the json file that will result from this app
 output = []
 
-#open my received input yaml
-with open(r'input.yaml') as file: #TODO: This needs to be further tested with more input.yaml files
+# call to the swapi url of a given list of urls returned as the value of a key in my original request
+def fetch_swapi_object(url):
+    # films do not seem to have a key of name and therefore must have their own logic, all other objects I've tested with do
+    # if future objects are discovered to have some other identifier in their keys that would be logical to add, it can be added here
+    # always check for an object where name will work first to slightly increase the speed of building the final list to write to the file
+    if "films" not in url:
+        return requests.get(url=url).json()['name']
+    else:
+        return requests.get(url=url).json()['title']
+
+#open the input.yaml file, read from it, call to the swapi api, filter for only desired keys listed in infoRequest and build the list
+with open(r'input.yaml') as file:
     documents = yaml.full_load(file)
 
-    #iterate through the items in the yaml
-    for k, v in documents.items():
-        for swapi_object in v:
-            #build the request to the swapi API
-            response = requests.get(url=f"https://swapi.dev/api/{swapi_object['type']}/{swapi_object['id']}").json()
+    for _, v in documents.items():
+        for info_request in v:
+            response = requests.get(url=f"https://swapi.dev/api/{info_request['type']}/{info_request['id']}").json()
+            output_item = {}
+            
+            for input_yaml_inforequest_key in info_request['infoRequest']:
+                if type(response[input_yaml_inforequest_key]) is list:
+                    sub_list = []
+                    for value in response[input_yaml_inforequest_key]:
+                        sub_list.append(fetch_swapi_object(value))
+                    output_item[input_yaml_inforequest_key] = sub_list
+                else:
+                    output_item[input_yaml_inforequest_key] = response[input_yaml_inforequest_key]
+            output.append(output_item)
 
-            #store each dict for the output
-            list_item = {}
-
-            #from the larger response json, filter to only return k/v pairs to write to the file that were requested in infoRequest from input.yaml
-            for key in swapi_object['infoRequest']:
-                #add key and value that has not been filtered to be a stored dict to join to the output
-                list_item[key] = response[key]
-                
-            #append my completed list index to the list
-            output.append(list_item)
-
-#create a new file in the dir to house my json data
-create_json = open('swapi-output.json', 'x')
-
-#write the final list of dicts or json to a .json formatted file
-with open('swapi-output.json', 'r+') as output_file:
+# create the new file with arg "x", then write my list to it
+with open('swapi-output.json', 'x') as output_file:
         output_file.write(f'{output}')
+
+time.sleep(10000)
